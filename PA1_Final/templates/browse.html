@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
+{% if photos %}
+<h2>Here are all photos</h2>
+    <ul>
+    {% for photo in photos %}
+        <li>User: {{photo[4]}}<br>
+        <li>Album: {{photo[3]}}<br>
+        <li>Caption: {{photo[2]}}<br>
+        <li>Tags: {{photo[5]}}<br>
+        <div>
+        <a href="{{ url_for('photo', photo_id = photo[1]) }}">
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<ul>
+    <li><a href='/albums'>View Your Albums/Photos</a> </li>
+    <li><a href='/upload'>Upload a photo</a> </li>
+    <li><a href='/browse'>Browse All Photos</a> </li>
+    <li><a href='/friends'>Friends</a> </li>
+    <li><a href='/friend_recommendation'>Friend Recommendations</a> </li>
+    <li><a href='/popular_tags'>Popular Tags</a> </li>
+    <li><a href='/photo_search'>Photo Search With Tags</a> </li>
+    <li><a href='/photo_search_caption'>Photo Search With Caption</a> </li>
+    <li><a href='/comment_search'>Comment Search</a> </li>
+    <li><a href='/logout'>Logout</a></li>
+    <li><a href='/'>Home</a></li>
+</ul>

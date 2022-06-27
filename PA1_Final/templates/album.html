@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
+<h1>{{album_name[0][0]}}</h1>
+
+<form method="post" enctype="multipart/form-data" action="">
+    <label for="photo">Upload photo:</label>
+    <input type="file" name="photo" required='true' /><br />
+    <label for="caption">Create a caption:</label>
+    <input type="text" name="caption" required='true' /><br />
+    <label for="tag">Tag your photo. For multiple tags, separate with a space:</label>
+    <input type="tag" name="tag" /><br />
+    <input type="submit" value="Upload" />
+</form>
+
+<h1>Delete Album</h1>
+<form action="" method="post">
+    <input type="submit" name="delete" value="Delete" />
+</form>
+
+
+{% for photo in photos %}
+    <li>User: {{photo[4]}}<br>
+    <li>Album: {{photo[3]}}<br>
+    <li>Caption: {{photo[2]}}<br>
+    <li>Tags: {{photo[5]}}<br>
+    <div>
+    <a href="{{ url_for('user_photo', photo_id = photo[1]) }}">
+    <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></a></li>
+{% endfor %}
+
+
+
+
+
+
+<ul>
+    <li><a href='/albums'>View Your Albums/Photos</a> </li>
+    <li><a href='/upload'>Upload a photo</a> </li>
+    <li><a href='/browse'>Browse All Photos</a> </li>
+    <li><a href='/friends'>Friends</a> </li>
+    <li><a href='/friend_recommendation'>Friend Recommendations</a> </li>
+    <li><a href='/popular_tags'>Popular Tags</a> </li>
+    <li><a href='/photo_search'>Photo Search With Tags</a> </li>
+    <li><a href='/photo_search_caption'>Photo Search With Caption</a> </li>
+    <li><a href='/comment_search'>Comment Search</a> </li>
+    <li><a href='/logout'>Logout</a></li>
+    <li><a href='/'>Home</a></li>
+</ul>

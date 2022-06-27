@@ -1,0 +1,42 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
+<form method="post" action="{{ url_for('friends') }}">
+    <label for="email">Add a friend by email!:</label>
+    <input type="email" name="email" /><br />
+    <input type="submit" />
+</form>
+
+{% if email_exists == 'False' %}
+<h2>User does not exist, try a different email!</h2>
+{% endif %}
+
+{% if friend_self == 'True' %}
+<h2>You can't friend yourself!!</h2>
+{% endif %}
+
+{% if already_friends == 'True' %}
+<h2>You are already friends!</h2>
+{% endif %}
+
+{% if friends %}
+<h2>Here are your friends</h2>
+    <ul>
+    {% for friend in friends %}
+        <li>{{friend[0]}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<ul>
+    <li><a href='/albums'>View Your Albums/Photos</a> </li>
+    <li><a href='/upload'>Upload a photo</a> </li>
+    <li><a href='/browse'>Browse All Photos</a> </li>
+    <li><a href='/friends'>Friends</a> </li>
+    <li><a href='/friend_recommendation'>Friend Recommendations</a> </li>
+    <li><a href='/popular_tags'>Popular Tags</a> </li>
+    <li><a href='/photo_search'>Photo Search With Tags</a> </li>
+    <li><a href='/photo_search_caption'>Photo Search With Caption</a> </li>
+    <li><a href='/comment_search'>Comment Search</a> </li>
+    <li><a href='/logout'>Logout</a></li>
+    <li><a href='/'>Home</a></li>
+</ul>

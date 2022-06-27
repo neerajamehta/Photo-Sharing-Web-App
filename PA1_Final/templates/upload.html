@@ -1,0 +1,38 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
+<head>
+    <title>Upload a photo!</title>
+</head>
+    <body>
+        <div class="title">
+            <h1>Upload a photo to Photoshare</h1>
+            {%if album_exists == 'False' %}
+            <h1> Must create album first!</a></h1>
+            {% endif %}
+        </div>
+            <form method="post" enctype="multipart/form-data" action="/upload">
+                <label for="photo">Select photo:</label>
+                <input type="file" name="photo" required='true' /><br />
+                <label for="caption">Please caption:</label>
+                <input type="text" name="caption" required='true' /><br />
+                <label for="album">Choose album:</label>
+                <input type="album" name="album" /><br />
+                <label for="tag">Add tags, if more than one tag, separate tags with spaces!:</label>
+                <input type="tag" name="tag" /><br />
+                <input type="submit" value="Upload" />
+            </form>
+    </body>
+
+    <ul>
+        <li><a href='/albums'>View Your Albums/Photos</a> </li>
+        <li><a href='/upload'>Upload a photo</a> </li>
+        <li><a href='/browse'>Browse All Photos</a> </li>
+        <li><a href='/friends'>Friends</a> </li>
+        <li><a href='/friend_recommendation'>Friend Recommendations</a> </li>
+        <li><a href='/popular_tags'>Popular Tags</a> </li>
+        <li><a href='/photo_search'>Photo Search With Tags</a> </li>
+        <li><a href='/photo_search_caption'>Photo Search With Caption</a> </li>
+        <li><a href='/comment_search'>Comment Search</a> </li>
+        <li><a href='/logout'>Logout</a></li>
+        <li><a href='/'>Home</a></li>
+    </ul>

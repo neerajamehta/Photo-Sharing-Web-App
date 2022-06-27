@@ -1,0 +1,26 @@
+h1{text-align: center;}
+body{background-color: #190061;
+    color: #fafafa;}
+ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    }
+    a:link {
+        color: whitesmoke;
+      }
+      
+      /* visited link */
+      a:visited {
+        color: rgb(126, 136, 126);
+      }
+      
+      /* mouse over link */
+      a:hover {
+        color: rgb(235, 173, 204);
+      }
+      
+      /* selected link */
+      a:active {
+        color: rgb(233, 121, 154);
+      }

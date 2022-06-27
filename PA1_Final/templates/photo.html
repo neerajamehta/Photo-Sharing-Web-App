@@ -1,0 +1,52 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
+<ul>
+    <li>User: {{photo[4]}}<br>
+    <li>Album: {{photo[3]}}<br>
+    <li>Caption: {{photo[2]}}<br>
+    <li>Tags:<br>
+    {% for tag in tags %}
+        <a href="{{ url_for('tags', tag_id = tag[0]) }}">
+            <li>{{tag[1]}}<br></a>
+    {% endfor %}
+    <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+    <form action="" method="post" >
+        <input type="submit" name="like" value="Like" />
+    </form>
+    <form action = "" method = "post">
+        <label for="comment">Leave a comment!:</label>
+        <input type="text" name="comment"/><br />
+        <input type="submit" name = 'comment' value="comment"/>
+    </form>
+</ul>
+
+{% if alreadyLiked == 'True' %}
+<h2>You already liked this photo!</h2>
+{% endif %}
+
+<h1>Photo likes = {{count}}</h1>
+<h2>Users who have liked</h2>
+{% for like in likes %}
+        <li>{{like[0]}}</li>
+{% endfor %}
+
+{% if sameUser == 'True' %}
+<h2>You can't comment on your own photo!</h2>
+{% endif %}
+
+<h2>Comments</h2>
+{% for comment in comments %}
+        <li>{{comment[0]}}:{{comment[1]}}</li>
+{% endfor %}
+<ul>
+    <li><a href='/albums'>View Your Albums/Photos</a> </li>
+    <li><a href='/upload'>Upload a photo</a> </li>
+    <li><a href='/browse'>Browse All Photos</a> </li>
+    <li><a href='/friends'>Friends</a> </li>
+    <li><a href='/friend_recommendation'>Friend Recommendations</a> </li>
+    <li><a href='/popular_tags'>Popular Tags</a> </li>
+    <li><a href='/photo_search'>Photo Search With Tags</a> </li>
+    <li><a href='/photo_search_caption'>Photo Search With Caption</a> </li>
+    <li><a href='/comment_search'>Comment Search</a> </li>
+    <li><a href='/logout'>Logout</a></li>
+    <li><a href='/'>Home</a></li>
+</ul>
